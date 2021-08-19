@@ -1,0 +1,17 @@
+<h2 class="text-center mt-5 mb-5">Your Lists | <%= link_to "Add List", new_list_path %></h2>
+
+<div class="container">
+    <div class="row">
+    <% @lists.each do |list| %>
+    <div class="col-sm mb-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= list.name %></h5>
+          <%= link_to "See More", list_path(list)%>
+          <%= link_to "Delete", list_path(list), :method => :delete, data: { :confirm => "Are you sure you want to destroy #{list.name}?" }, style: "color: red;"  %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

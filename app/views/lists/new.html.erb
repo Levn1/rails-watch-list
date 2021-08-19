@@ -1,0 +1,8 @@
+<h2 class="text-center mt-5">Create List</h2>
+<div class="container-sm">
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Create List", class: "btn btn-primary" %>
+    <%= link_to "Cancel", lists_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
