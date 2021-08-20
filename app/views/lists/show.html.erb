@@ -1,3 +1,16 @@
 <h2 class="text-center mt-5"><%= @list.name %></h2>
 <div class="text-center mt-1"><%= link_to "Go Back", lists_path, class: "btn btn-primary" %></div>
+<div class="text-center mt-1"><%= link_to "Add Movie", new_list_bookmark_path(@list), class: "btn btn-primary" %></div>
 <h3 class="text-center mt-5">Movies: <%= @list.movies.count %></h3>
+<% @list.movies.each do |movie| %>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <div class="col-sm m-5">
+      <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://s3-us-west-2.amazonaws.com/flx-editorial-wordpress/wp-content/uploads/2019/09/01093013/Endgame-Lead-1.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= movie.title %></h5>
+          <%= link_to "Delete", bookmark_path(bookmark), :method => :delete, data: { :confirm => "Are you sure you want to destroy #{movie.title}?" }, style: "color: red;"  %>
+        </div>
+      </div>
+    </div>
+<% end %>

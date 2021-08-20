@@ -1,0 +1,9 @@
+<h2 class="text-center mt-5">Create Bookmark</h2>
+<div class="container-sm">
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment %>
+    <%= f.association :movie, prompt: 'Select a movie', input_html: { class: 'select2' } %>
+    <%= f.submit "Create List", class: "btn btn-primary" %>
+    <%= link_to "Cancel", lists_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
