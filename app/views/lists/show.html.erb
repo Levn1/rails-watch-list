@@ -2,11 +2,13 @@
 <div class="text-center mt-1"><%= link_to "Go Back", lists_path, class: "btn btn-primary" %></div>
 <div class="text-center mt-1"><%= link_to "Add Movie", new_list_bookmark_path(@list), class: "btn btn-primary" %></div>
 <h3 class="text-center mt-5">Movies: <%= @list.movies.count %></h3>
+
+<div class="container d-flex">
 <% @list.movies.each do |movie| %>
   <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-    <div class="col-sm m-5">
+    <div class="p-2">
       <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="" alt="Card image cap">
+      <%= image_tag movie.poster_url, class:'card-img-top'%>
         <div class="card-body">
           <h5 class="card-title"><%= movie.title %></h5>
           <%= link_to "Delete", bookmark_path(bookmark), :method => :delete, data: { :confirm => "Are you sure you want to destroy #{movie.title}?" }, style: "color: red;"  %>
@@ -14,3 +16,4 @@
       </div>
     </div>
 <% end %>
+</div>
